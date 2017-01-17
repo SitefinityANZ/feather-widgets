@@ -47,11 +47,6 @@ namespace Telerik.Sitefinity.Frontend.Forms.Mvc.Models.Fields.TextField
         Number,
 
         /// <summary>
-        /// Defines a password field (characters are masked)
-        /// </summary>
-        Password,
-
-        /// <summary>
         /// Defines a control for entering a number whose exact value is not important (like a slider control)
         /// </summary>
         Range,
