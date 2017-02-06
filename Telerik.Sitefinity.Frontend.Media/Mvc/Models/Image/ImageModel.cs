@@ -76,6 +76,11 @@ namespace Telerik.Sitefinity.Frontend.Media.Mvc.Models.Image
         /// <inheritDoc/>
         public virtual ImageViewModel GetViewModel()
         {
+            CustomSizeModel customSizeModel = null;
+            if (this.CustomSize != null)
+            {
+                customSizeModel = new JavaScriptSerializer().Deserialize<CustomSizeModel>(this.CustomSize);
+            }
             var viewModel = new ImageViewModel()
             {
                 AlternativeText = this.AlternativeText,
@@ -83,10 +88,16 @@ namespace Telerik.Sitefinity.Frontend.Media.Mvc.Models.Image
                 DisplayMode = this.DisplayMode,
                 ThumbnailName = this.ThumbnailName,
                 ThumbnailUrl = this.ThumbnailUrl,
-                CustomSize = this.CustomSize != null ? new JavaScriptSerializer().Deserialize<CustomSizeModel>(this.CustomSize) : null,
+                CustomSize = customSizeModel,
                 UseAsLink = this.UseAsLink,
-                CssClass = this.CssClass
+                CssClass = this.CssClass,
             };
+
+            if (customSizeModel != null)
+            {
+                viewModel.Width = customSizeModel.MaxWidth.HasValue ? customSizeModel.MaxWidth.ToString() : string.Empty;
+                viewModel.Height = customSizeModel.MaxHeight.HasValue ? customSizeModel.MaxHeight.ToString() : string.Empty;
+            }
 
             SfImage image;
             if (this.Id != Guid.Empty)

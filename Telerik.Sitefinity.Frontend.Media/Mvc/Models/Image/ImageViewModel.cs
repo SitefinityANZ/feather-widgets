@@ -97,5 +97,15 @@ namespace Telerik.Sitefinity.Frontend.Media.Mvc.Models.Image
         /// The size of the custom thumbnail serialized as JSON.
         /// </value>
         public CustomSizeModel CustomSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the width attribute of the image tag
+        /// </summary>
+        public string Width { get; set; }
+
+        /// <summary>
+        /// Gets or sets the height attribute of the image tag
+        /// </summary>
+        public string Height { get; set; }
     }
 }

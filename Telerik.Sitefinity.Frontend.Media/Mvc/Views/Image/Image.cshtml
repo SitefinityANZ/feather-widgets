@@ -1,12 +1,16 @@
 @model Telerik.Sitefinity.Frontend.Media.Mvc.Models.Image.ImageViewModel
 
+@helper ImageTag() { 
+    <img class="@Model.CssClass" src="@Model.SelectedSizeUrl" title="@Model.Title" alt="@Model.AlternativeText" height="@Model.Height" width="@Model.Width"/>
+}
+
 @if (string.IsNullOrEmpty(Model.LinkedContentUrl))
 {
-    <img class="@Model.CssClass" src="@Model.SelectedSizeUrl" title="@Model.Title" alt="@Model.AlternativeText" />
+    @ImageTag()
 }
 else
 {
     <a href="@Model.LinkedContentUrl">
-        <img class="@Model.CssClass" src="@Model.SelectedSizeUrl" title="@Model.Title" alt="@Model.AlternativeText" />
+        @ImageTag()
     </a>
 }
