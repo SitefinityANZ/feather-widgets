@@ -93,7 +93,7 @@ namespace Telerik.Sitefinity.Frontend.Media.Mvc.Models.Image
                 CssClass = this.CssClass,
             };
 
-            if (customSizeModel != null)
+            if (customSizeModel != null) // todo: add check for vector graphics: if true enter, else skip.
             {
                 viewModel.Width = customSizeModel.MaxWidth.HasValue ? customSizeModel.MaxWidth.ToString() : string.Empty;
                 viewModel.Height = customSizeModel.MaxHeight.HasValue ? customSizeModel.MaxHeight.ToString() : string.Empty;
